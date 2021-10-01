@@ -1,0 +1,23 @@
+/**
+ * @param {string[]} ops
+ * @return {number}
+ */
+var calPoints = function(ops) {
+    var number = 0;
+    var opsout = [];
+    for (let i = 0; i < ops.length; i++){
+        if(ops[i] == "+"){
+            opsout[i] = Number(ops[i-2]) + Number(ops[i-1]);   /*前兩個相加*/
+        }else if(ops[i] == "C"){
+            opsout.pop();                              /*消除最後一個元素*/
+        }else if(ops[i] == "D"){
+            opsout[i] = Number(ops[i-1]) * 2;                  /*上一個元素2倍*/
+        }else{
+            opsout[i] = Number(ops[i]);
+        }
+    }
+    opsout.forEach(function(value){
+        number += value;        
+    }) 
+    return number;
+}
