@@ -1,0 +1,23 @@
+/*
+ * @param {string} s
+ * @return {string}
+ */
+ var sortSentence = function(s) {
+    var newArray = [];
+    newArray = s.split(" ");                      /*切割字串放入矩陣*/
+    
+    function rev(obj){                              /*反轉的函式*/
+        return obj.split("").reverse().join("");
+    }
+    
+    for(let i = 0; i < newArray.length; i++){
+        newArray[i] = rev(newArray[i]);
+    }
+    newArray.sort();                        
+    for(let j = 0; j < newArray.length; j++){     /*去頭 轉回來*/
+        newArray[j] = newArray[j].slice(1);
+        newArray[j] = rev(newArray[j]);
+    }
+    var result = newArray.join(" ");
+    return result;
+};
