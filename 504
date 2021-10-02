@@ -1,0 +1,22 @@
+/*
+ * @param {number} num
+ * @return {string}
+ */
+ var convertToBase7 = function(num) {
+    var num7 = [];
+    var pn = "";
+    if (num < 0){
+        pn = "-";
+        num = Math.abs(num);
+    }
+    if (num == 0){
+        return num + "";
+    }
+    while(num > 6){
+        num7.unshift(num%7);
+        num = parseInt(num/7);
+    };
+    num7.unshift(num);
+    num7.unshift(pn);
+    return num7.join("");
+};
