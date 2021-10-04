@@ -1,0 +1,48 @@
+/*
+ * @param {number} big
+ * @param {number} medium
+ * @param {number} small
+ */
+var ParkingSystem = function(big, medium, small) {
+    var ParkingSpace = [big, medium, small];
+    //this.count[big, medium, small];
+};
+/*
+ * @param {number} carType
+ * @return {boolean}
+ */
+ParkingSystem.prototype.addCar = function(carType) {
+    if(carType == 1){
+        if(ParkingSpace[0] > 0){
+            return true;
+            ParkingSpace[0] = ParkingSpace[0] - 1;
+        }else{
+            return false;
+        }
+    }else
+    if(carType == 2){
+        if(ParkingSpace[1] > 0){
+            return true;
+            ParkingSpace[1] = ParkingSpace[1] - 1;
+        }else{
+            return false;
+        }
+    }else
+    if(carType == 3){
+        if(ParkingSpace[2] > 0){
+            return true;
+            ParkingSpace[2] = ParkingSpace[2] - 1;
+        }else{
+            return false;
+        }
+    }else{
+        return null;
+    }
+    //return this.count[carType - 1]-- > 0;
+};
+
+/** 
+ * Your ParkingSystem object will be instantiated and called as such:
+ * var obj = new ParkingSystem(big, medium, small)
+ * var param_1 = obj.addCar(carType)
+ */

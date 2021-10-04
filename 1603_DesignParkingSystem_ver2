@@ -1,0 +1,43 @@
+/*
+ * @param {number} big
+ * @param {number} medium
+ * @param {number} small
+ */
+var ParkingSystem = function(big, medium, small) {
+    this.ParkingSpace = [big, medium, small];
+};
+/*
+ * @param {number} carType
+ * @return {boolean}
+ */
+ParkingSystem.prototype.addCar = function(carType) {
+    switch (carType) {
+        case 1:
+            if(this.ParkingSpace[0] > 0){
+                this.ParkingSpace[0] = this.ParkingSpace[0] - 1;
+                return true;
+            }else{
+                return false;
+            }
+            break;
+        case 2:
+            if(this.ParkingSpace[1] > 0){
+                this.ParkingSpace[1] = this.ParkingSpace[1] - 1;
+                return true;
+            }else{
+                return false;
+            }
+            break;
+        case 3:
+            if(this.ParkingSpace[2] > 0){
+                this.ParkingSpace[2] = this.ParkingSpace[2] - 1;
+                return true;
+            }else{
+                return false;
+            }
+            break;
+        default:
+            break;
+    }
+    
+};
