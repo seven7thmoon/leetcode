@@ -1,0 +1,18 @@
+/*
+ * @param {number} n
+ * @param {number} start
+ * @return {number}
+ */
+var xorOperation = function(n, start) {
+    var nums = [];
+    var output = nums[0];
+    for(let i = 0; i < n; i++){
+        nums[i] = start + 2*i;
+        output = output ^ nums[i];
+    }
+    return output ;
+    
+};
+
+//雖然跟題136有點像 但是136跑的是重複元素
+//這題跑的是不同數字轉為二進位後XOR真正的結果
