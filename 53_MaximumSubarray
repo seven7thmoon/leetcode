@@ -1,0 +1,27 @@
+/*
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+    //先切割出所有矩陣組合
+    var subArray = [];
+    for(let i = 0; i < nums.length; i++){
+        for(let j = i + 1; j < nums.length + 1; j++){
+            subArray.push(nums.slice(i,j));
+        }
+    }
+
+    //比較各組合的總和大小
+    var maxSum = 0;
+    var sumtemp = 0;
+    const reducer = (previousValue, currentValue) => previousValue + currentValue;
+    for (let i = 0; i < subArray.length; i++) {
+        sumtemp = subArray[i].reduce(reducer);
+        if(maxSum < sumtemp){
+            maxSum = sumtemp;
+        }else{continue;}
+    };
+    return maxSum;
+}
+
+//reference https://emn178.pixnet.net/blog/post/88907691
