@@ -3,24 +3,43 @@
  * @return {number}
  */
  var maxArea = function(height) {
-    let realArea = height[0];
-    let maxHeight = height[0];
-    let realHeight = 0;
-    let firstWall = 0;
-    let secondWall = 0;
-    let realWidth = 0; 
-     
-    for (let i = 0; i < height.length; i++) {
-        maxHeight = Math.max(maxHeight,height[i]);
-        firstWall = i;
-        for (let j = 0; j < height.length; j++) {
-            if(realHeight <= maxHeight){
-                realHeight = Math.max(realHeight, height[j]);
-                secondWall = j;
-            }
+    let left = 0;
+    let right = height.length - 1;
+    let area = 0;
+
+    while(left < right){
+        let tempHeight = Math.min(height[left], height[right]);
+        let tempArea = (right - left) * tempHeight;
+        
+        area = Math.max(area, tempArea);
+
+        if(height[left] < height[right]){
+            left += 1;
+        }else{
+            right -= 1;
         }
-        realWidth = Math.max(realWidth, Math.abs(secondWall - firstWall));
-        realArea = Math.max(realArea, realHeight * realWidth);
     }
-    return realArea;
- };
+    return area;
+};
+//  var maxArea = function(height) {
+//     let realArea = height[0];
+//     let maxHeight = height[0];
+//     let realHeight = 0;
+//     let firstWall = 0;
+//     let secondWall = 0;
+//     let realWidth = 0; 
+     
+//     for (let i = 0; i < height.length; i++) {
+//         maxHeight = Math.max(maxHeight,height[i]);
+//         firstWall = i;
+//         for (let j = 0; j < height.length; j++) {
+//             if(realHeight <= maxHeight){
+//                 realHeight = Math.max(realHeight, height[j]);
+//                 secondWall = j;
+//             }
+//         }
+//         realWidth = Math.max(realWidth, Math.abs(secondWall - firstWall));
+//         realArea = Math.max(realArea, realHeight * realWidth);
+//     }
+//     return realArea;
+//  };

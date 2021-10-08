@@ -1,0 +1,14 @@
+/*
+ * @param {string} n
+ * @return {number}
+ */
+var minPartitions = function(n) {
+    var newArray = n.split('');
+    var result = 0;
+    for (let i = 0; i < newArray.length; i++){
+        if (result < newArray[i]){
+            result = newArray[i];
+        }
+    }
+    return result;
+};
