@@ -5,27 +5,22 @@
  */
 var suggestedProducts = function(products, searchWord) {
     let searchPiece = "";
-    let tempArray = [];
     let output = [];
 
     //先排序
     products.sort();
 
     for (let i = 0; i < searchWord.length; i++) {
+        let tempArray = [];
         //切割searchword為不同長度片段
-        searchPiece = searchWord.split("", i+1).join("");
+        searchPiece = searchWord.slice(0, i+1);
 
         for (let j = 0; j < products.length; j++) {
-            if(products[j].split("", i+1).join("") == searchPiece){
+            if(products[j].slice(0, i+1) == searchPiece && tempArray.length < 3){
                 tempArray.push(products[j]);
-            }
-            if(tempArray.length > 3){
-                tempArray.pop();
             }
         }
         output.push(tempArray);
-        //清空tempArray
-        tempArray = [];
     }
     return output;
 };
