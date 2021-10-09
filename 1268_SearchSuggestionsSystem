@@ -1,0 +1,31 @@
+/*
+ * @param {string[]} products
+ * @param {string} searchWord
+ * @return {string[][]}
+ */
+var suggestedProducts = function(products, searchWord) {
+    let searchPiece = "";
+    let tempArray = [];
+    let output = [];
+
+    //先排序
+    products.sort();
+
+    for (let i = 0; i < searchWord.length; i++) {
+        //切割searchword為不同長度片段
+        searchPiece = searchWord.split("", i+1).join("");
+
+        for (let j = 0; j < products.length; j++) {
+            if(products[j].split("", i+1).join("") == searchPiece){
+                tempArray.push(products[j]);
+            }
+            if(tempArray.length > 3){
+                tempArray.pop();
+            }
+        }
+        output.push(tempArray);
+        //清空tempArray
+        tempArray = [];
+    }
+    return output;
+};
