@@ -1,0 +1,26 @@
+//discussion的解 
+var combinationSum = function(candidates, target) {
+    let output = [];
+    candidateSearch(output, [], candidates, target, 0);
+    return output;
+};
+
+//函數裡的變數非常多 想想怎麼關聯i跟start的
+let candidateSearch = function(output, candidatesArray, candidates, target, start) {
+    //這一步的return是要讓line 17能順利pop出不適合的元素
+    if (target < 0) return
+    else if (target == 0) output.push(candidatesArray.slice())
+    else {
+        for (let i = start; i < candidates.length; i++) {
+            candidatesArray.push(candidates[i]);
+            //把target減掉candidate[i]後再遞迴
+            candidateSearch(output, candidatesArray, candidates, target-candidates[i], i);
+            //pop這一步放在這裡跟放在line 10的差別要測試一下
+            candidatesArray.pop();
+        }       
+    }
+}
+
+let candidates = [2, 3, 5];
+let target = 8;
+console.log(combinationSum(candidates, target));
