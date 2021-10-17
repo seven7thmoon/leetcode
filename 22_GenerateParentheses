@@ -1,0 +1,44 @@
+/*
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function(n) {
+    let output = [];
+    loop(output, "", n, 0);
+    return output;
+};
+/*一個函數產生 "(" + 函數結果 + ")" 
+            & "()" + 函數結果 
+            & 函數結果 + "()"
+*/   
+let loop = function(output, stringP, n, start){
+    if (n == 1){
+        stringP = "(" + ")" 
+        return output.push(stringP);
+    } 
+    else{
+        for (let i = start; i < n; i++) {
+            stringP = "(" + loop(output, stringP, n-1, i) + ")";
+        }
+        // 想法卡住...
+    }
+}
+
+// function generateParenthesis(n) {
+//     const res = [];
+  
+//     function go(l, r, s) {  // l: left remaining, r: right remaining
+//       if (l > r) return;  // The number of '(' should be always >= ')'
+  
+//       if (l === 0 && r === 0) {
+//         res.push(s);
+//         return;
+//       }
+  
+//       if (l > 0) go(l - 1, r, s + '(');
+//       if (r > 0) go(l, r - 1, s + ')');
+//     }
+  
+//     go(n, n, '');
+//     return res;
+//   }
