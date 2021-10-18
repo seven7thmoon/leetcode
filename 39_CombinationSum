@@ -20,7 +20,3 @@ let candidateSearch = function(output, candidatesArray, candidates, target, star
         }       
     }
 }
-
-let candidates = [2, 3, 5];
-let target = 8;
-console.log(combinationSum(candidates, target));

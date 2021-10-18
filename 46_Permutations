@@ -1,0 +1,29 @@
+/*
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+    let output = [];
+    let tempArray = [];
+    
+
+    let backtracking = function (output, tempArray, tempNums) {
+        if(tempNums.length == 0){
+            output.push(tempArray.slice());
+            return;
+        }
+        for (let i = 0; i < tempNums.length; i++) {
+            //取出第i個元素, 剩下的跑遞迴
+            tempArray.push(tempNums[i]);
+            tempNums.splice(i,1);
+            backtracking(output, tempArray, tempNums);
+            
+            tempNums.splice(i, 0, tempArray.pop());//我本來寫成 tempNums = nums;
+        }
+
+    }
+
+    backtracking(output, tempArray, nums);
+    return output;
+};
+
