@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/*
+ * @param {TreeNode} root
+ * @param {number} targetSum
+ * @return {boolean}
+ */
+var hasPathSum = function(root, targetSum) {
+
+    function pathSum(tempNode, tempSum, sum) {
+        if (tempNode == null) {
+            return false;
+        }
+        //路徑上總和
+        tempSum = tempSum + tempNode.val;//注意這裡不是tempNode 而是tempNode.val
+        //到最深時
+        if (tempNode.left == null && tempNode.right == null) {
+            return tempSum === sum;
+        }
+        //遞迴
+        return pathSum(tempNode.left, tempSum, sum) || pathSum(tempNode.right, tempSum, sum);
+    }
+
+    return pathSum(root, 0, targetSum);
+};
