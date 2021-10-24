@@ -20,5 +20,6 @@ var findTargetSumWays = function(nums, target) {
     return result;
 };
 console.log(findTargetSumWays([1,1,1,1,1], 3));
-//結果fail...
+//結果fail... line 10 的判斷以currNums的長度為0比較好
+
 //solution https://leetcode.com/problems/target-sum/discuss/491220/JavaScript-or-Simple-DFS
