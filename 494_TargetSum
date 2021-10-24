@@ -1,0 +1,24 @@
+/*
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var findTargetSumWays = function(nums, target) {
+    let result = 0;
+
+    const count = function (currNums, currSum) {
+        if (currSum == target){
+            result += 1;
+        }else{
+            let tempArray = [...currNums];
+            count(tempArray, currSum + tempArray.shift());
+            count(tempArray, currSum - tempArray.shift());
+        }
+    }
+    count(nums, 0);
+
+    return result;
+};
+console.log(findTargetSumWays([1,1,1,1,1], 3));
+//結果fail...
+//solution https://leetcode.com/problems/target-sum/discuss/491220/JavaScript-or-Simple-DFS
