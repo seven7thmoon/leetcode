@@ -3,7 +3,7 @@
  * @param {number} val
  * @return {number}
  */
-//solution 1
+//solution 1 暴力解 把所有元素前移再縮短長度
 var removeElement = function(nums, val) {
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] == val) {
@@ -17,7 +17,7 @@ var removeElement = function(nums, val) {
     return nums.length;//這裡有沒有return 答案都會一樣因為原數組已經被改變長度了
 };
 
-//solution 2
+//solution 2 雙指針 
 var removeElement = function(nums, val) {
     let slowIndex = 0;
     for (let fastIndex = 0; fastIndex < nums.length; fastIndex++) {
